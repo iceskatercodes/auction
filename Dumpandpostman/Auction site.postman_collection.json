@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "7bc0d943-ff0d-43a2-b166-07cd055856c9",
+		"name": "Auction site",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:4000/ping",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd790f04-c8f2-41ab-9e6d-a3f05ba2846a",
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.environment.set('token', data.tkn);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"a@b.com\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:4000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin1\",\r\n    \"password\": \"123\",\r\n    \"first_name\": \"f_name\",\r\n    \"last_name\": \"l_name\",\r\n    \"phone\": 1234567,\r\n    \"email\": \"a@b.com\",\r\n    \"styleid\": 1,\r\n    \"languageid\": 1,\r\n    \"currencyid\": 1,\r\n    \"timezone\": \"America/New_York\",\r\n    \"notifyservices\": true,\r\n    \"notifyproducts\": true,\r\n    \"displayprofile\": 1,\r\n    \"emailnotify\": true,\r\n    \"displayfinancials\": true,\r\n    \"vatnumber\": \"\",\r\n    \"regnumber\": \"\",\r\n    \"dnbnumber\": \"\",\r\n    \"companyname\": 0,\r\n    \"usecompanyname\": 0,\r\n    \"daysonsite\":0,\r\n    \"timeonsite\":0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:4000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMSwiaXBhZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXByZXN0cmljdCI6MCwidXNlcm5hbWUiOiJhZG1pbjEiLCJwYXNzd29yZCI6IjIwMDU5ZTJjYWVkMzE2MTY3NmE0ZTEzNDFhYjdmZTFlOTIyZDIwMGQ2OTNkZGY2MWJiZGY2ODAwMmU0NDljZTY5OGQ3YTllZjc1ZWM4YjI2MTYyOTUyYmRkMjQxNTg3YzRiMDQwOTY0MGZlZWUxZDQ2ZmRhYTFhMDAzYmIyMzU1Iiwic2FsdCI6ImFlYzk4Iiwic2VjcmV0cXVlc3Rpb24iOiIiLCJzZWNyZXRhbnN3ZXIiOiIiLCJlbWFpbCI6ImFAYi5jb20iLCJmaXJzdF9uYW1lIjoiZl9uYW1lIiwibGFzdF9uYW1lIjoibF9uYW1lIiwiYWRkcmVzcyI6IiIsImFkZHJlc3MyIjpudWxsLCJjaXR5IjoiIiwic3RhdGUiOiIiLCJ6aXBfY29kZSI6IiIsInBob25lIjoiMTIzNDU2NyIsImNvdW50cnkiOjUwMCwiZGF0ZV9hZGRlZCI6IjAwMDAtMDAtMDAgMDA6MDA6MDAiLCJzdWJjYXRlZ29yaWVzIjpudWxsLCJzdGF0dXMiOiJhY3RpdmUiLCJzZXJ2aWNlYXdhcmRzIjowLCJwcm9kdWN0YXdhcmRzIjowLCJzZXJ2aWNlc29sZCI6MCwicHJvZHVjdHNvbGQiOjAsInJhdGluZyI6MCwic2NvcmUiOjAsImZlZWRiYWNrIjowLCJiaWRzdG9kYXkiOjAsImJpZHN0aGlzbW9udGgiOjAsImF1Y3Rpb25kZWxpc3RzIjowLCJiaWRyZXRyYWN0cyI6MCwibGFzdHNlZW4iOiIwMDAwLTAwLTAwIDAwOjAwOjAwIiwiZG9iIjoiMDAwMC0wMC0wMCIsInJpZCI6IiIsImFjY291bnRfbnVtYmVyIjoiIiwiYXZhaWxhYmxlX2JhbGFuY2UiOjAsInRvdGFsX2JhbGFuY2UiOjAsImluY29tZV9yZXBvcnRlZCI6MCwiaW5jb21lX3NwZW50IjowLCJzdGFydHBhZ2UiOiJtYWluIiwic3R5bGVpZCI6MSwicHJvamVjdF9kaXN0YW5jZSI6MSwiY3VycmVuY3lfY2FsY3VsYXRpb24iOjEsImxhbmd1YWdlaWQiOjEsImN1cnJlbmN5aWQiOjEsInRpbWV6b25lIjoiQW1lcmljYS9OZXdfWW9yayIsIm5vdGlmeXNlcnZpY2VzIjoxLCJub3RpZnlwcm9kdWN0cyI6MSwibm90aWZ5c2VydmljZXNjYXRzIjpudWxsLCJub3RpZnlwcm9kdWN0c2NhdHMiOm51bGwsImxhc3RlbWFpbHNlcnZpY2VjYXRzIjoiMDAwMC0wMC0wMCIsImxhc3RlbWFpbHByb2R1Y3RjYXRzIjoiMDAwMC0wMC0wMCIsImRpc3BsYXlwcm9maWxlIjoxLCJlbWFpbG5vdGlmeSI6MSwiZGlzcGxheWZpbmFuY2lhbHMiOjEsInZhdG51bWJlciI6IiIsInJlZ251bWJlciI6IiIsImRuYm51bWJlciI6IiIsImNvbXBhbnluYW1lIjoiTi9BIiwidXNlY29tcGFueW5hbWUiOjAsInRpbWVvbnNpdGUiOjAsImRheXNvbnNpdGUiOjAsImlzYWRtaW4iOjAsInBlcm1pc3Npb25zIjpudWxsLCJzZWFyY2hvcHRpb25zIjpudWxsLCJyYXRlcGVyaG91ciI6MCwicHJvZmlsZXZpZGVvdXJsIjpudWxsLCJwcm9maWxlaW50cm8iOm51bGwsImdlbmRlciI6IiIsImZyZWVsYW5jaW5nIjoiIiwiYXV0b3BheW1lbnQiOjEsInBvc3RodG1sIjowLCJ1c2VybmFtZV9oaXN0b3J5IjpudWxsLCJwYXNzd29yZF9sYXN0Y2hhbmdlZCI6IjAwMDAtMDAtMDAgMDA6MDA6MDAiLCJyb2xlIjowLCJzdG9yZSI6MCwic3RvcmVfcGF5IjowLCJpYXQiOjE2MDQ4NTQ1NjIsImV4cCI6MTYwNDk0MDk2Mn0.BMtaDCQCEwqu1CaljoO7wW9JRbBWVY5wN9rIbk5p4zA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:4000/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contracts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMSwiaXBhZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXByZXN0cmljdCI6MCwidXNlcm5hbWUiOiJhZG1pbjEiLCJwYXNzd29yZCI6IjIwMDU5ZTJjYWVkMzE2MTY3NmE0ZTEzNDFhYjdmZTFlOTIyZDIwMGQ2OTNkZGY2MWJiZGY2ODAwMmU0NDljZTY5OGQ3YTllZjc1ZWM4YjI2MTYyOTUyYmRkMjQxNTg3YzRiMDQwOTY0MGZlZWUxZDQ2ZmRhYTFhMDAzYmIyMzU1Iiwic2FsdCI6ImFlYzk4Iiwic2VjcmV0cXVlc3Rpb24iOiIiLCJzZWNyZXRhbnN3ZXIiOiIiLCJlbWFpbCI6ImFAYi5jb20iLCJmaXJzdF9uYW1lIjoiZl9uYW1lIiwibGFzdF9uYW1lIjoibF9uYW1lIiwiYWRkcmVzcyI6IiIsImFkZHJlc3MyIjpudWxsLCJjaXR5IjoiIiwic3RhdGUiOiIiLCJ6aXBfY29kZSI6IiIsInBob25lIjoiMTIzNDU2NyIsImNvdW50cnkiOjUwMCwiZGF0ZV9hZGRlZCI6IjAwMDAtMDAtMDAgMDA6MDA6MDAiLCJzdWJjYXRlZ29yaWVzIjpudWxsLCJzdGF0dXMiOiJhY3RpdmUiLCJzZXJ2aWNlYXdhcmRzIjowLCJwcm9kdWN0YXdhcmRzIjowLCJzZXJ2aWNlc29sZCI6MCwicHJvZHVjdHNvbGQiOjAsInJhdGluZyI6MCwic2NvcmUiOjAsImZlZWRiYWNrIjowLCJiaWRzdG9kYXkiOjAsImJpZHN0aGlzbW9udGgiOjAsImF1Y3Rpb25kZWxpc3RzIjowLCJiaWRyZXRyYWN0cyI6MCwibGFzdHNlZW4iOiIwMDAwLTAwLTAwIDAwOjAwOjAwIiwiZG9iIjoiMDAwMC0wMC0wMCIsInJpZCI6IiIsImFjY291bnRfbnVtYmVyIjoiIiwiYXZhaWxhYmxlX2JhbGFuY2UiOjAsInRvdGFsX2JhbGFuY2UiOjAsImluY29tZV9yZXBvcnRlZCI6MCwiaW5jb21lX3NwZW50IjowLCJzdGFydHBhZ2UiOiJtYWluIiwic3R5bGVpZCI6MSwicHJvamVjdF9kaXN0YW5jZSI6MSwiY3VycmVuY3lfY2FsY3VsYXRpb24iOjEsImxhbmd1YWdlaWQiOjEsImN1cnJlbmN5aWQiOjEsInRpbWV6b25lIjoiQW1lcmljYS9OZXdfWW9yayIsIm5vdGlmeXNlcnZpY2VzIjoxLCJub3RpZnlwcm9kdWN0cyI6MSwibm90aWZ5c2VydmljZXNjYXRzIjpudWxsLCJub3RpZnlwcm9kdWN0c2NhdHMiOm51bGwsImxhc3RlbWFpbHNlcnZpY2VjYXRzIjoiMDAwMC0wMC0wMCIsImxhc3RlbWFpbHByb2R1Y3RjYXRzIjoiMDAwMC0wMC0wMCIsImRpc3BsYXlwcm9maWxlIjoxLCJlbWFpbG5vdGlmeSI6MSwiZGlzcGxheWZpbmFuY2lhbHMiOjEsInZhdG51bWJlciI6IiIsInJlZ251bWJlciI6IiIsImRuYm51bWJlciI6IiIsImNvbXBhbnluYW1lIjoiTi9BIiwidXNlY29tcGFueW5hbWUiOjAsInRpbWVvbnNpdGUiOjAsImRheXNvbnNpdGUiOjAsImlzYWRtaW4iOjAsInBlcm1pc3Npb25zIjpudWxsLCJzZWFyY2hvcHRpb25zIjpudWxsLCJyYXRlcGVyaG91ciI6MCwicHJvZmlsZXZpZGVvdXJsIjpudWxsLCJwcm9maWxlaW50cm8iOm51bGwsImdlbmRlciI6IiIsImZyZWVsYW5jaW5nIjoiIiwiYXV0b3BheW1lbnQiOjEsInBvc3RodG1sIjowLCJ1c2VybmFtZV9oaXN0b3J5IjpudWxsLCJwYXNzd29yZF9sYXN0Y2hhbmdlZCI6IjAwMDAtMDAtMDAgMDA6MDA6MDAiLCJyb2xlIjowLCJzdG9yZSI6MCwic3RvcmVfcGF5IjowLCJpYXQiOjE2MDQ4NTQ1NjIsImV4cCI6MTYwNDk0MDk2Mn0.BMtaDCQCEwqu1CaljoO7wW9JRbBWVY5wN9rIbk5p4zA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:4000/contracts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"contracts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Projects based on users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiaXBhZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXByZXN0cmljdCI6MCwidXNlcm5hbWUiOiJhZG1pbjEiLCJwYXNzd29yZCI6ImYxNWU4MjJiZDUxMTA5NzFiNWM0ZTZmNjVmMWM5NTU1NTJkMmE5MzMxMTUwOTE1YzMyNzM0NmQ5MjQxOGZkYTUiLCJzYWx0IjoiYWRkYTUiLCJzZWNyZXRxdWVzdGlvbiI6IiIsInNlY3JldGFuc3dlciI6IiIsImVtYWlsIjoiYUBiLmNvbSIsImZpcnN0X25hbWUiOiJmX25hbWUiLCJsYXN0X25hbWUiOiJsX25hbWUiLCJhZGRyZXNzIjoiIiwiYWRkcmVzczIiOm51bGwsImNpdHkiOiIiLCJzdGF0ZSI6IiIsInppcF9jb2RlIjoiIiwicGhvbmUiOiIxMjM0NTY3IiwiY291bnRyeSI6NTAwLCJkYXRlX2FkZGVkIjoiMDAwMC0wMC0wMCAwMDowMDowMCIsInN1YmNhdGVnb3JpZXMiOm51bGwsInN0YXR1cyI6ImFjdGl2ZSIsInNlcnZpY2Vhd2FyZHMiOjAsInByb2R1Y3Rhd2FyZHMiOjAsInNlcnZpY2Vzb2xkIjowLCJwcm9kdWN0c29sZCI6MCwicmF0aW5nIjowLCJzY29yZSI6MCwiZmVlZGJhY2siOjAsImJpZHN0b2RheSI6MCwiYmlkc3RoaXNtb250aCI6MCwiYXVjdGlvbmRlbGlzdHMiOjAsImJpZHJldHJhY3RzIjowLCJsYXN0c2VlbiI6IjAwMDAtMDAtMDAgMDA6MDA6MDAiLCJkb2IiOiIwMDAwLTAwLTAwIiwicmlkIjoiIiwiYWNjb3VudF9udW1iZXIiOiIiLCJhdmFpbGFibGVfYmFsYW5jZSI6MCwidG90YWxfYmFsYW5jZSI6MCwiaW5jb21lX3JlcG9ydGVkIjowLCJpbmNvbWVfc3BlbnQiOjAsInN0YXJ0cGFnZSI6Im1haW4iLCJzdHlsZWlkIjoxLCJwcm9qZWN0X2Rpc3RhbmNlIjoxLCJjdXJyZW5jeV9jYWxjdWxhdGlvbiI6MSwibGFuZ3VhZ2VpZCI6MSwiY3VycmVuY3lpZCI6MSwidGltZXpvbmUiOiJBbWVyaWNhL05ld19Zb3JrIiwibm90aWZ5c2VydmljZXMiOjEsIm5vdGlmeXByb2R1Y3RzIjoxLCJub3RpZnlzZXJ2aWNlc2NhdHMiOm51bGwsIm5vdGlmeXByb2R1Y3RzY2F0cyI6bnVsbCwibGFzdGVtYWlsc2VydmljZWNhdHMiOiIwMDAwLTAwLTAwIiwibGFzdGVtYWlscHJvZHVjdGNhdHMiOiIwMDAwLTAwLTAwIiwiZGlzcGxheXByb2ZpbGUiOjEsImVtYWlsbm90aWZ5IjoxLCJkaXNwbGF5ZmluYW5jaWFscyI6MSwidmF0bnVtYmVyIjoiIiwicmVnbnVtYmVyIjoiIiwiZG5ibnVtYmVyIjoiIiwiY29tcGFueW5hbWUiOiJOL0EiLCJ1c2Vjb21wYW55bmFtZSI6MCwidGltZW9uc2l0ZSI6MCwiZGF5c29uc2l0ZSI6MCwiaXNhZG1pbiI6MCwicGVybWlzc2lvbnMiOm51bGwsInNlYXJjaG9wdGlvbnMiOm51bGwsInJhdGVwZXJob3VyIjowLCJwcm9maWxldmlkZW91cmwiOm51bGwsInByb2ZpbGVpbnRybyI6bnVsbCwiZ2VuZGVyIjoiIiwiZnJlZWxhbmNpbmciOiIiLCJhdXRvcGF5bWVudCI6MSwicG9zdGh0bWwiOjAsInVzZXJuYW1lX2hpc3RvcnkiOm51bGwsInBhc3N3b3JkX2xhc3RjaGFuZ2VkIjoiMDAwMC0wMC0wMCAwMDowMDowMCIsInJvbGUiOjAsInN0b3JlIjowLCJzdG9yZV9wYXkiOjAsImlhdCI6MTYwNTA4MjUyNiwiZXhwIjoxNjA1MTY4OTI2fQ.BtgfP3LeWvNHdeg0tbjzCtsmoNTgo_dGwsYVNt9V_BM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:4000/projects?limit=2&skip=0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"projects"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "skip",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
